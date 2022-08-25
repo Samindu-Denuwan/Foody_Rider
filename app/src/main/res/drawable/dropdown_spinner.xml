@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item>
+ <!--   <layer-list>
+      &lt;!&ndash;  <item>
+            <shape android:shape="rectangle">
+                <solid android:color="@color/white"/>
+                <corners android:radius="50dp"/>
+                <padding android:right="10dp"/>
+
+            </shape>
+            <bitmap android:gravity="center|end" android:src="@drawable/ic_dropdown"/>
+        </item>&ndash;&gt;
+
+        <item>
+            <shape android:shape="rectangle">
+                <stroke android:color="#E91E63" android:width="2dp"/>
+                <size android:width="350dp" android:height="45dp"/>
+                <corners android:radius="30dp"/>
+
+            </shape>
+
+        </item>
+        <item>
+            <bitmap android:gravity="center|end" android:src="@drawable/ic_dropdown"/>
+        </item>
+
+
+    </layer-list>-->
+
+    <layer-list>
+        <item>
+            <shape android:shape="rectangle">
+                <size android:height="50dp" android:width="50dp"/>
+
+                <stroke android:color="#E91E63" android:width="2dp"/>
+                <padding  android:right="10dp"
+                    android:left="10dp"/>
+                <corners android:radius="30dp"/>
+
+            </shape>
+
+        </item>
+        <item android:drawable="@drawable/ic_down"
+            android:gravity="end" >
+
+        </item>
+
+
+
+
+    </layer-list>
+</item>
+
+</selector>

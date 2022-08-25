@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Rider</string>
+    <string name="page_title">%s page is selected</string>
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="profile">Profile</string>
+    <string name="cart">Cart</string>
+    <string name="orders">Orders</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="messages">Messages</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="favourite">Favourite</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="foodItem">Food Items</string>
+    <string name="dashboardImg">Dashboard Images</string>
+    <string name="promotion">Promotion Items</string>
+    <string name="addItem">Add Item</string>
+    <string name="addItemCategory">Add Item Category</string>
+    <string name="addCategory">Add Category</string>
+    <string name="addFoodItem">Add Food Item</string>
+    <string name="ViewAllItem">View All Item</string>
+    <string name="updateFodd">Update Food Items</string>
+    <string name="ViewAvailableItem">View Available Items</string>
+    <string name="settings">Settings</string>
+</resources>
