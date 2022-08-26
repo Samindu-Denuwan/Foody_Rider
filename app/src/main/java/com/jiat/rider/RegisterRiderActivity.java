@@ -76,11 +76,13 @@ public class RegisterRiderActivity extends AppCompatActivity implements Location
 
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private String shopUID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_rider);
 
+        shopUID = "d6RHVgGQoNZMkciEMVl16lSSsIw2";
 
         imageViewUser = findViewById(R.id.imageViewUser);
 
