@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+
 }
 
 android {
@@ -26,6 +28,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -38,6 +43,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-messaging:23.0.7'
+    implementation 'androidx.navigation:navigation-fragment:2.5.1'
+    implementation 'androidx.navigation:navigation-ui:2.5.1'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
 
     def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
@@ -66,4 +75,13 @@ dependencies {
     implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
+
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
 }

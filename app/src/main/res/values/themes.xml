@@ -22,8 +22,9 @@
 
     </style>
 
-    <style name="Theme.Rider.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="Theme.Rider.popUpOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="Theme.Rider.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Rider.popUpOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/orange</item>
@@ -58,4 +59,11 @@
     </style>-->
     <color name="lightGrey">#CFCFCF</color>
     <color name="duskYellow">#FAE203</color>
+
+    <style name="Theme.Rider.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Rider.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

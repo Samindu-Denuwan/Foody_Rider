@@ -5,20 +5,35 @@
       <map>
         <entry key="..\:/Foody App/Rider/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.321" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/drawable/ic_logout.xml" value="0.321" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/drawable/rider_icon.xml" value="0.1835" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/drawable/splash_shape_round.xml" value="0.321" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/font/aclonica.xml" value="0.3770833333333333" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/font/nunito.xml" value="0.3770833333333333" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_forgot_pw.xml" value="0.33152173913043476" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_order_details_rider.xml" value="0.16869300911854104" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_order_details_seller.xml" value="0.346875" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_orders_rider_details.xml" value="0.3007246376811594" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_profile_edit_user.xml" value="0.1" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_register_rider.xml" value="0.25" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_rider_navi.xml" value="0.346875" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_rider_order.xml" value="0.346875" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_rider_orders_detail.xml" value="0.3458333333333333" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_rider_orders_details.xml" value="0.346875" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_splash.xml" value="0.22" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/activity_tracking_order.xml" value="0.346875" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/app_bar_main.xml" value="0.1" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/checkout_cart_layout.xml" value="0.3007246376811594" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/content_rider_order_detials.xml" value="0.346875" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/edit_profile_bottomsheet.xml" value="0.346875" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_first.xml" value="0.3007246376811594" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_home.xml" value="0.2884963768115942" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_orders.xml" value="0.346875" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_profile.xml" value="0.346875" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_second.xml" value="0.3007246376811594" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_settings.xml" value="0.3007246376811594" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/navi_header_view.xml" value="0.1" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/row_order_details.xml" value="0.346875" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/menu/menu.xml" value="0.1" />
       </map>
     </option>
