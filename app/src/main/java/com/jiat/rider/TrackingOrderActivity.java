@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,6 +49,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.Call;
@@ -133,23 +137,55 @@ public class TrackingOrderActivity extends FragmentActivity implements OnMapRead
                         riderPosition = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
 
 
-                        if(marker_me == null){
-                            MarkerOptions markerOptions = new MarkerOptions();
-                            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.m1));
-                            markerOptions.title("you");
-                            markerOptions.position(riderPosition);
-                            marker_me = mMap.addMarker(markerOptions);
-                            moveCamera(riderPosition);
-                        }else{
-                            marker_me.setPosition(riderPosition);
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("riderLat", "" + lastLocation.getLatitude());
+                        hashMap.put("riderLong", "" + lastLocation.getLongitude());
 
-                        }
-                        getDirection(riderPosition, marker_Customer.getPosition());
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+                        ref.child(firebaseAuth.getUid()).child("Temp_Location").setValue(hashMap)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        //db update
+                                        if(marker_me == null){
+                                            MarkerOptions markerOptions = new MarkerOptions();
+                                            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.m1));
+                                            markerOptions.title("you");
+                                            markerOptions.position(riderPosition);
+                                            markerOptions.anchor((float) 0.5, (float) 0.5);
+                                            markerOptions.rotation(lastLocation.getBearing());
+                                            float result[] = new float[10];
+                                            Location.distanceBetween(lastLocation.getLatitude(), lastLocation.getLongitude(), Cus_lat,Cus_longi, result );
+                                            markerOptions.snippet("Distance: "+result[0]+"m");
+                                            marker_me = mMap.addMarker(markerOptions);
+                                            moveCamera(riderPosition);
+                                        }else{
+                                            marker_me.setPosition(riderPosition);
+                                            marker_me.setRotation(lastLocation.getBearing());
+
+
+
+                                        }
+                                        getDirection(riderPosition, marker_Customer.getPosition());
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+
+
+                                    }
+                                });
+
+
+
+
 
 
 
                     }
                 }, Looper.getMainLooper());
+
 
 
 
@@ -183,10 +219,10 @@ public class TrackingOrderActivity extends FragmentActivity implements OnMapRead
 
 
 
-
+private  double Cus_lat, Cus_longi;
     public void markCustomer(String desti_latitude, String desti_longitude, String customerName) {
-        double Cus_lat = Double.parseDouble(desti_latitude);
-        double Cus_longi = Double.parseDouble(desti_longitude);
+         Cus_lat = Double.parseDouble(desti_latitude);
+         Cus_longi = Double.parseDouble(desti_longitude);
         LatLng latLng1 = new LatLng(Cus_lat, Cus_longi);
 
         if(marker_Customer == null){

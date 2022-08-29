@@ -188,7 +188,7 @@ public class RegisterRiderActivity extends AppCompatActivity implements Location
             return;
         }
         if(userPassword.length()<6){
-            Toast.makeText(this, "Password Must be atlease 6 characters...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Password Must be at lease 6 characters...", Toast.LENGTH_SHORT).show();
             return;
         }
         if(!userPassword.equals(confirmPassword)){
