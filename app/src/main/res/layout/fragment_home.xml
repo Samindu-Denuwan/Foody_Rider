@@ -1,10 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home"
     tools:context=".ui.HomeFragment">
 
 
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchStatus"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="190dp"
+        android:background="@drawable/half_round_rec"
+        android:backgroundTint="@color/BackgroundColor"
+        android:paddingLeft="10dp"
+        android:paddingTop="17dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="17dp"
+        android:text="Online Status : "
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:theme="@style/SCBSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/back_rec_round"
+        android:backgroundTint="@color/BackgroundColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchStatus" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewOrders"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:text="Orders"
+                android:textColor="#333333"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/allOrderTv"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/half_right"
+                android:backgroundTint="@color/RoseRed"
+                android:gravity="end"
+                android:paddingLeft="30dp"
+                android:paddingEnd="10dp"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="45sp"
+                android:textStyle="bold" />
+
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_below="@+id/allOrderTv"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="115dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/order_guy" />
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewNewOrders2"
+                android:layout_width="match_parent"
+                android:layout_height="275dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#ECECED"
+                app:cardCornerRadius="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewOrders">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/tv6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="15dp"
+                        android:text="New Orders"
+                        android:textColor="@color/RoseRed"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/order_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/tv6"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:reverseLayout="true"
+                        app:stackFromEnd="true" />
+
+                    <TextView
+                        android:id="@+id/NewOrdersNot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv6"
+                        android:layout_alignStart="@+id/order_recycler"
+                        android:layout_alignEnd="@+id/order_recycler"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginEnd="40dp"
+                        android:drawableTop="@drawable/ic_food"
+                        android:drawableTint="@color/gray"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="15dp"
+                        android:visibility="gone"
+                        android:text="Empty New Orders"
+                        android:textColor="@color/gray"
+                        android:textSize="27sp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

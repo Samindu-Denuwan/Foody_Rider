@@ -113,9 +113,6 @@ public class ProfileFragment extends Fragment implements LocationListener {
         btnOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(getActivity(), UserOrderActivity.class);
-                startActivity(intent);
-                Toast.makeText(getActivity(), "Orders...", Toast.LENGTH_SHORT).show();*/
                 Fragment fragment =  new OrdersFragment();
                 FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();

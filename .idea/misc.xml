@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Foody App/Rider/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.321" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/drawable/ic_logo_notification_foody.xml" value="0.23" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/drawable/ic_logout.xml" value="0.321" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/drawable/rider_icon.xml" value="0.1835" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/drawable/splash_shape_round.xml" value="0.321" />
@@ -27,7 +28,7 @@
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/content_rider_order_detials.xml" value="0.346875" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/edit_profile_bottomsheet.xml" value="0.346875" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_first.xml" value="0.3007246376811594" />
-        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_home.xml" value="0.2884963768115942" />
+        <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_home.xml" value="0.3048543689320388" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_orders.xml" value="0.346875" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_profile.xml" value="0.346875" />
         <entry key="..\:/Foody App/Rider/app/src/main/res/layout/fragment_second.xml" value="0.3007246376811594" />

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
@@ -53,7 +54,7 @@ public class OrdersRiderDetailsActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private String orderId, orderTo, orderBy;
     private RecyclerView OrderD_recycler;
-    private ImageButton backBtn, openMapBtn, btnEdit, btnCall;
+    private ImageButton backBtn, openMapBtn, btnEdit, btnCall, DeliveredBtn;
     private TextView ORDER_ID, date, status, cusEmail, cuMobile, amount, address, itemCount, RiderName;
     private ArrayList<ModelOrderDetailsRider> modelOrderDetailsRiders;
     private AdapterRiderOderDetails adapterRiderOderDetails;
@@ -87,6 +88,7 @@ public class OrdersRiderDetailsActivity extends AppCompatActivity {
         openMapBtn = findViewById(R.id.deliveryStatBtn);
         btnEdit = findViewById(R.id.btnEditBack);
         btnCall = findViewById(R.id.customerCallBtn);
+        DeliveredBtn = findViewById(R.id.deliveredBtn);
 
 
 
@@ -127,8 +129,59 @@ public class OrdersRiderDetailsActivity extends AppCompatActivity {
             }
         });
 
+        DeliveredBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(status.getText().equals("On the way")) {
+                    setDelivered();
+                }else if(status.getText().equals("Delivered")){
+                    Toast.makeText(OrdersRiderDetailsActivity.this, "Order is Already in Delivered Status...", Toast.LENGTH_SHORT).show();
+                }else if(status.getText().equals("Rider Cancelled")){
+                    Toast.makeText(OrdersRiderDetailsActivity.this, "Order is in Cancelled Status...", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(OrdersRiderDetailsActivity.this, "Order is not Start to Delivery yet...", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
+
+
+    }
+
+    private void setDelivered() {
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("orderStatus", ""+"Delivered");
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(orderTo).child("Orders").child(orderId)
+                .updateChildren(hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @SuppressLint("ResourceType")
+                    @Override
+                    public void onSuccess(Void unused) {
+                        String message = "Order is  Delivered Successfully..";
+                        android.app.AlertDialog.Builder  builder = new android.app.AlertDialog.Builder(OrdersRiderDetailsActivity.this);
+                        builder.setTitle("Order Delivered")
+                                .setMessage(message)
+                                .setCancelable(true)
+                                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        finish();
+                                    }
+                                })
+                                .show();
+                        //Toast.makeText(OrdersRiderDetailsActivity.this, message, Toast.LENGTH_SHORT).show();
+
+                        prepareNotificationMessage(orderId, message);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(OrdersRiderDetailsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
     }
 
@@ -314,13 +367,14 @@ public class OrdersRiderDetailsActivity extends AppCompatActivity {
     }
 
     private void prepareNotificationMessage(String orderId, String message){
-        //when Seller change order status, in progress, completed, cancelled, send notification to user
+        //when Rider change order status, in progress, completed, cancelled, send notification to user
 
         //data for notification
         String NOTIFICATION_TOPIC = "/topics/" + Constants.FCM_TOPIC;
         String NOTIFICATION_TITLE = "Your Order "+ orderId;
         String NOTIFICATION_MESSAGE = ""+ message;
         String NOTIFICATION_TYPE = "OrderStatusChanged";
+
 
         //JSON(what to send & where to
         JSONObject notificationJo = new JSONObject();
@@ -331,6 +385,7 @@ public class OrdersRiderDetailsActivity extends AppCompatActivity {
             notificationBodyJo.put("notificationType", NOTIFICATION_TYPE);
             notificationBodyJo.put("buyerUid", orderBy);
             notificationBodyJo.put("sellerUid", orderTo);
+            notificationBodyJo.put("riderUid", firebaseAuth.getUid());
             notificationBodyJo.put("orderId", orderId);
             notificationBodyJo.put("notificationTitle", NOTIFICATION_TITLE);
             notificationBodyJo.put("notificationMessage", NOTIFICATION_MESSAGE);
@@ -353,7 +408,7 @@ public class OrdersRiderDetailsActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 //send notification
-                Log.i(TAG, "Success send FCM Seller");
+                Log.i(TAG, "Success send FCM Rider");
                 // Toast.makeText(OrderDetailsSellerActivity.this, "Success "+response, Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
@@ -361,7 +416,7 @@ public class OrdersRiderDetailsActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 // failed
                 //  Toast.makeText(OrderDetailsSellerActivity.this, "Error "+error, Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "Failed send FCM Seller");
+                Log.i(TAG, "Failed send FCM Rider");
             }
         }){
             @Override

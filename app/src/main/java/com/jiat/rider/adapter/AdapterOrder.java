@@ -69,6 +69,14 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.ViewHolder>i
             holder.orderId.setText("Order Id: " + orderID);
             holder.orderStatus.setText(orderSTATUS);
 
+        if(orderSTATUS.equals("Ready to Deliver")){
+            holder.orderStatus.setTextColor(context.getResources().getColor(R.color.Blue));
+        }else if(orderSTATUS.equals("Rider Cancelled")){
+            holder.orderStatus.setTextColor(context.getResources().getColor(R.color.red));
+        }else{
+            holder.orderStatus.setTextColor(context.getResources().getColor(R.color.orange));
+        }
+
 
             //convert timestamp
             Calendar calendar = Calendar.getInstance();
